@@ -1,0 +1,90 @@
+﻿@using Ext.Net;
+@using Ext.Net.MVC;
+
+@model System.Collections.IEnumerable
+@{
+    ViewBag.Title = "Liste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .x-grid-row-over .x-grid-cell-inner {
+        font-weight: bold;
+    }
+</style>
+
+<script>
+
+</script> 
+
+<h2>Historique - Enquête</h2>
+
+@(Html.X().ResourceManager())
+
+@(
+        Html.X()
+        .GridPanel()
+       .Layout(LayoutType.Fit)
+        .Height(400)
+        .TopBar
+        (
+           Html.X().Toolbar()
+           .Items
+           (
+                Html.X().Button()
+                .ID("btnAjouter")
+                .Text("Ajouter")
+                .Icon(Icon.Add)
+                .DirectEvents
+                (
+                     de=>
+                     {
+                         de.Click.Url = Url.Action("Creer", "Enquete");
+                         de.Click.EventMask.ShowMask = true;
+                     }
+                ),
+
+               Html.X().Button()
+                .ID("btnModifier")
+                .Text("Modifier")
+                .Icon(Icon.ApplicationEdit),
+
+                Html.X().Button()
+                .ID("btnSupprimer")
+                .Text("Supprimer")
+                .Icon(Icon.Delete)
+           )
+        )
+        .BottomBar(
+                Html.X().PagingToolbar()
+            )
+        .Store
+        (
+            Html.X()
+            .Store()
+            .Model
+            (
+                Html.X()
+               .Model()
+                .Fields
+                (
+                    new ModelField("ID", ModelFieldType.Int),
+                    new ModelField("Titre", ModelFieldType.String),
+                    new ModelField("Campagne", ModelFieldType.String),
+                    new ModelField("DateDebut", ModelFieldType.Date, "M/d hh:mmtt"),
+                    new ModelField("DateFin", ModelFieldType.Date, "M/d hh:mmtt"),
+                    new ModelField("CibleAsString", ModelFieldType.String )
+                )
+            )
+            .DataSource(Model)
+        )
+        .ColumnModel
+        (
+            Html.X().Column().Text("#").DataIndex("ID"),
+            Html.X().Column().Text("Titre").DataIndex("Titre").Flex(1),
+            Html.X().Column().Text("Campagne").DataIndex("Campagne"),
+            Html.X().Column().Text("Debut").DataIndex("DateDebut"),
+            Html.X().Column().Text("Fin").DataIndex("DateFin"),
+            Html.X().Column().Text("Cible").DataIndex("CibleAsString")
+        )
+)

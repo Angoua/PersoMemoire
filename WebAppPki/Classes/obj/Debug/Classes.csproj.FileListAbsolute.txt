@@ -1,0 +1,5 @@
+C:\DATA\Source\Perso\WebAppPki\Classes\bin\Debug\Classes.dll
+C:\DATA\Source\Perso\WebAppPki\Classes\bin\Debug\Classes.pdb
+C:\DATA\Source\Perso\WebAppPki\Classes\obj\Debug\Classes.csprojResolveAssemblyReference.cache
+C:\DATA\Source\Perso\WebAppPki\Classes\obj\Debug\Classes.dll
+C:\DATA\Source\Perso\WebAppPki\Classes\obj\Debug\Classes.pdb

@@ -1,0 +1,100 @@
+﻿@model IEnumerable<DataCollectorApp.Models.Enquete>
+
+@{
+    ViewBag.Title = "Liste";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Liste</h2>
+
+<p>
+    @Html.ActionLink("Créer", "Create")
+</p>
+<table class="dataTable border bordered" data-role="datatable" data-auto-width="false">
+    <tr>
+        <th class="sortable-column sort-asc">
+            @Html.DisplayNameFor(model => model.enID)
+        </th>
+        <th  class="sortable-column sort-asc">
+            @Html.DisplayNameFor(model => model.enTitre)
+        </th>
+        <th  class="sortable-column sort-asc">
+            @Html.DisplayNameFor(model => model.enCampagne)
+        </th>
+        <th  class="sortable-column sort-asc">
+            @Html.DisplayNameFor(model => model.enDateDebut)
+        </th>
+        <th  class="sortable-column sort-asc">
+            @Html.DisplayNameFor(model => model.enDateFin)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.IsNew)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstDesactive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationUtilisateur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModificationUtilisateur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModificationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RowVersion)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.enID)
+        </td>
+        <td >
+            @Html.DisplayFor(modelItem => item.enTitre)
+        </td>
+        <td >
+            @Html.DisplayFor(modelItem => item.enCampagne)
+        </td>
+        <td >
+            @Html.DisplayFor(modelItem => item.enDateDebut)
+        </td>
+        <td >
+            @Html.DisplayFor(modelItem => item.enDateFin)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.IsNew)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstDesactive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationUtilisateur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModificationUtilisateur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModificationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RowVersion)
+        </td>*@
+        <td>
+            @Html.ActionLink("Modifier", "Edit", new { id=item.enID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.enID }) |
+            @Html.ActionLink("Supprimer", "Delete", new { id=item.enID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,135 @@
+﻿@(
+    Html.X().Window()
+    .Width(700)
+    .Height(400)
+    .Modal(true)
+    .Title("Enquete - Creer")
+    .Padding(20)
+    //.Layout(LayoutType.VBox)
+    //.X(new Random().Next(300))
+    //.Y(new Random().Next(300))
+    .CloseAction(CloseAction.Destroy)
+
+    .Buttons
+    (
+        Html.X()
+        .Button()
+    )
+    .Items
+    (
+
+        Html.X()
+        .Container()
+        .ID("pnlHeaderDe")
+        .Layout(LayoutType.Column)
+        .Padding(20)
+
+        .Items
+        (
+
+                    Html.X()
+                    .TextField()
+                    .ID("txtID")
+                    .FieldLabel("ID")
+                    .LabelAlign(LabelAlign.Right)
+                    .ReadOnly(true)
+
+                    ,
+                     Html.X()
+                    .TextField()
+                    .ID("txtTitre")
+                    .FieldLabel("Titre")
+                    .LabelAlign(LabelAlign.Right)
+                    .Text("")
+                    ,
+
+
+                    Html.X()
+                    .DateField()
+                    .ID("dtfDateDebut")
+                    .LabelAlign(LabelAlign.Right)
+                    .FieldLabel("Debut")
+                    ,
+                     Html.X()
+                    .DateField()
+                    .ID("dtfDateFin")
+                    .LabelAlign(LabelAlign.Right)
+                    .FieldLabel("Fin")
+                    ,
+
+                    Html.X()
+                    .ComboBox()
+                    .ID("cmbCampagne")
+                    .LabelAlign(LabelAlign.Right)
+                    .FieldLabel("Campagne")
+                    ,
+                     Html.X()
+                    .ComboBox()
+                    .ID("cmbCible")
+                    .LabelAlign(LabelAlign.Right)
+                    .FieldLabel("Cible")
+       )
+       ,
+
+      Html.X()
+      .Container()
+      .ID("pnlDetail")
+      .Padding(20)
+      .Items
+        (
+
+                   Html.X()
+                   .GridPanel()
+                   .ID("grpQuestion")
+                   .Layout(LayoutType.Fit)
+                   .Height(200)
+                   .TopBar
+                    (
+                       Html.X().Toolbar()
+                       .ID("toolBarDetail")
+                       .Items
+                       (
+                            Html.X().Button()
+                            .ID("btnAdd")
+                            .Text("Ajouter")
+                            .Icon(Icon.Add),
+
+                           Html.X().Button()
+                            .ID("btnEdit")
+                            .Text("Modifier")
+                            .Icon(Icon.ApplicationEdit),
+
+                            Html.X().Button()
+                            .ID("btnDelete")
+                            .Text("Supprimer")
+                            .Icon(Icon.Delete)
+                       )
+                    )
+                    .BottomBar
+                    (
+                        Html.X().PagingToolbar()
+                    )
+                    .Store
+                    (
+                        Html.X()
+                        .Store()
+                        .Model
+                        (
+                            Html.X()
+                            .Model()
+                            .Fields
+                            (
+                                new ModelField("ID", ModelFieldType.Int),
+                                new ModelField("Titre", ModelFieldType.String)
+                            )
+                        )
+                    //.DataSource(Model)
+                    )
+                    .ColumnModel
+                    (
+                        Html.X().Column().Text("#").DataIndex("ID"),
+                        Html.X().Column().Text("Titre").DataIndex("Titre").Flex(1)
+                    )
+            )
+    )
+)
